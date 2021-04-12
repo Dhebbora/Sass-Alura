@@ -3,7 +3,7 @@ Projeto realizado no curso de Sass feito pela Alura.
 
 - Variáveis
 - Agrupamento
-- Interpolção
+- Interpolação
 - At Rules
   -  @mixin
   -  funções
