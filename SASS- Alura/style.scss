@@ -1,0 +1,218 @@
+$orange: hsl(22, 100%, 49%);
+$light-gray: #eaeaeb;
+$dark-gray: #464646;
+$yellow: #FABE50;
+$font-primary: Arial, Helvetica, sans-serif;
+$img-width: 45%;
+
+%no-decoration{text-decoration: none;}
+%u-decoration{text-decoration: underline;}
+
+@mixin reset-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    
+}
+@mixin  flx ($property, $jty-cnt){
+    display: flex;
+    #{$property}: $jty-cnt;
+}
+
+@mixin for-phone-only{
+    @media (max-width: 767.98px){
+        @content;
+    }
+}
+@mixin for-tablet-only{
+    @media(min-width: 768px) and (max-width: 11099.98px){
+        @content;
+    }
+}
+@mixin  for-desktop-only{
+    @media (min-width: 1200px)
+    { @content; }
+}
+
+@function calculateRem ($size){
+    @return $size / 16px * 1rem;
+}
+
+@mixin fontSize($size) {
+    font-size: calculateRem($size);
+    
+}
+@import 'header', 'footer','base','article','collection','contato';
+
+$directions: top, bottom, left, right;
+$layout-margin-size: 10px;
+
+@each $direction in $directions {
+    %no-margin-#{$direction} {margin-#{$direction}: 0};
+    %default-margin-#{$direction} {margin-#{$direction}: $layout-margin-size;}
+    %double-margin-#{$direction} {margin-#{$direction}: $layout-margin-size * 2;}
+    %half-margin-#{$direction} {margin-#{$direction}: $layout-margin-size / 2;}
+    
+}
+
+
+.main{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    font-family: $font-primary;
+
+    &-content{
+        width: 70%;
+        padding: 40px 8px;
+        @include for-phone-only{
+            width: 100%;
+        }
+    }
+    &-post{
+        text-align: center;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    &-title{
+        text-decoration: none;
+        @include fontSize(23px);
+        color: $dark-gray;
+        letter-spacing: 1.5;
+        &:hover{
+            color: $orange;
+        }
+    }
+    &-subtitle{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        @extend %default-margin-top, %double-margin-bottom;
+    }
+    &-date{
+        @extend %no-margin-top, %no-margin-bottom, %default-margin-left, %default-margin-right;
+        @include fontSize(12px);
+        font-style: italic;
+    }
+    &-tag{
+        @include fontSize(14px);
+        padding: 5px 7px;
+        color: $orange;
+        border: 1px solid $orange;
+        @extend %no-margin-top, %no-margin-bottom, %default-margin-left, %default-margin-right;
+    }
+
+    &-details{
+        border: 1px solid $light-gray;
+    }
+    &-img{
+        width: 100%;
+
+    }
+    &-description{
+        padding: 40px 0 25px;
+        max-width: 650px;
+        margin-left: auto;
+        margin-right: auto;
+        @include fontSize(14px);
+
+    }
+    &-btn{
+        text-decoration: none;
+        @include fontSize(16px);
+        letter-spacing: 1.5;
+        color: $orange;
+        background-color: $yellow;
+        padding: 10px 20px;
+        transition: .3s;
+        &:hover{
+            color: $yellow;
+            background-color: $orange;
+        }
+    }
+    &-info{
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        border-top: 1px solid $light-gray;
+        margin-top: 30px;
+    }
+    &-autor{
+        width: 50%;
+        border-right: 1px solid $light-gray;
+    }
+    &-p{
+        @include fontSize(14px);
+        color: $dark-gray;
+        @extend %no-margin-left, %no-margin-right, %default-margin-top, %default-margin-bottom;
+
+    }
+    &-comments{
+        width: 50%;
+        
+    }
+    &-a{
+        text-decoration: none;
+        @include fontSize(14px);
+        color: $dark-gray;
+        @extend %no-margin-left, %no-margin-right, %default-margin-top, %default-margin-bottom;
+        &:hover{
+            color:$orange;
+        }
+    }
+
+    &-sidebar{
+        width: 25%;
+        padding: 40px 10px;
+        @include for-phone-only{
+            width: 100%;
+        }
+    }
+    .sidebar{
+        &-top{
+            border: 1px solid $light-gray;
+            padding: 15px 20px;
+        }
+        &-title{
+            background-color: $yellow;
+            text-align: center;
+            padding: 10px 20px;
+            margin: 0;
+            letter-spacing: 1.5px;
+        }
+        &-posts{
+            @include reset-list;
+        }
+        &-list{
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            align-items: center;
+            padding: 15px 0;
+            &:not(:last-child){
+                border-bottom:  1px dashed $light-gray;
+            }
+        }
+        &-img{
+            width: 40%;
+        }
+        &-details{
+            width: 50%;
+            padding-left: 10px;
+        }
+        &-post-title{
+            @include fontSize(14px);
+            color: $orange;
+            @extend %no-decoration;
+
+            &:hover{
+                @extend %u-decoration;
+            }
+        }
+        &-post-date{
+            @include fontSize(12px);
+            @extend %default-margin-top, %no-margin-bottom, %no-margin-left, %default-margin-right;
+        }
+    }
+}

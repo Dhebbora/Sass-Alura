@@ -1,0 +1,86 @@
+.about{      
+    width: 80%;
+    margin: 0 auto 40px;
+    font-family: $font-primary;
+
+    @include for-phone-only {   
+        width: 90%;
+    }
+
+    &-title{
+        background-color: $light-gray;
+        text-align: center;
+        padding: 20px;
+    }
+    &-h1{
+        @include fontSize(22px);
+        color: $dark-gray;
+        letter-spacing: 1px;
+        margin: 5px 0 10px;
+    }
+    .breadcrumb{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &-link{
+            font-size: 12px;
+            text-decoration: none;
+            color: $dark-gray;
+            &:hover{
+                text-decoration: underline;
+                color: $orange;
+            }
+        }
+        &-img{
+            width: 14px;
+            margin: 8px;
+        }
+    }
+    &-img{
+        width: 100%;
+        margin-bottom: 100px;
+    }
+    &-intro{
+        font-weight: 100;
+        color: $dark-gray;
+        width: 70%;
+        text-align: center;
+        @include fontSize(16px);
+        margin: 30px auto;
+
+        @include for-phone-only {   
+            width: 90%;
+        }
+        @include for-tablet-only {   
+            width: 80%;
+        }
+    }
+    &-split{
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+    &-imag{
+        width: $img-width;
+        @include for-phone-only {   
+            width: 80%;
+        }
+
+    }
+    &-txt{
+        width: calc(100% - #{$img-width});
+        
+        @include for-phone-only {   
+            width: 90%;
+            text-align: center;
+        }
+    }
+        &-p{
+            @include fontSize(14px);
+            padding: 10px 20px;
+            color: $dark-gray;
+        }
+    
+}
